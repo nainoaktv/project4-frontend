@@ -5,14 +5,24 @@ import { Redirect } from 'react-router-dom';
 const { REACT_APP_SERVER_URL } = process.env;
 
 const Signup = () => {
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-    const handleName = (e) => {
-        setName(e.target.value);
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value);
+    }
+
+    const handleLastName = (e) => {
+        setLastName(e.target.value);
+    }
+
+    const handleUserName = (e) => {
+        setUserName(e.target.value);
     }
 
     const handleEmail = (e) => {
@@ -32,8 +42,8 @@ const Signup = () => {
         // make sure password and confirm password are equal
         // password length >= 8 characters
         if (password === confirmPassword && password.length >= 8) {
-            const newUser = { name, email, password };
-            axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser)
+            const newUser = { firstName, lastName, userName, email, password };
+            axios.post(`${REACT_APP_SERVER_URL}/users/signup`, newUser)
             .then(response => {
                 console.log('===> Yay, new user');
                 console.log(response);
@@ -55,8 +65,16 @@ const Signup = () => {
                     <h2 className="py-2">Signup</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="name">Name</label>
-                            <input type="text" name="name" value={name} onChange={handleName} className="form-control"/>
+                            <label htmlFor="name">First Name</label>
+                            <input type="text" name="name" value={firstName} onChange={handleFirstName} className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="name">Last Name</label>
+                            <input type="text" name="name" value={lastName} onChange={handleLastName} className="form-control"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="name">Username</label>
+                            <input type="text" name="name" value={userName} onChange={handleUserName} className="form-control"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
