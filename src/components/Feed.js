@@ -16,8 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Feed = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
         <Grid item xs={4}>
           <Item><UserFeedBox/></Item>
         </Grid>
@@ -25,8 +24,6 @@ const Feed = () => {
           <Item><h2>Feed</h2></Item>
         </Grid>
       </Grid>
-    </Box>
-
   )
 }
 
