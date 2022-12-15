@@ -17,7 +17,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const Feed = () => {
   return (
     <Grid container spacing={4}>
-      <Grid item xs={8}>
+      <Grid item xs={3}>
+        <Item>SEARCHBAR</Item>
+      </Grid>
+      <Grid item xs={5}>
         {/* TODO: INSERT RANDOM POSTS FOR TESTING WITH 2-3 TEST USERS WITH FOLLOW REALATIONS */}
         <Item><h2>Lorem ipsum dolor sit amet, mea an quis voluptaria, in per facilis omittam molestiae, usu te delicata instructior. Sed omnes probatus consequat ex. Delenit honestatis deterruisset quo ad, magna bonorum mei cu. Dicant adipiscing intellegam qui ut, per quis aliquip an. Cu sea labore repudiandae comprehensam, has illud dissentiet eu.
 

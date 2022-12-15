@@ -44,11 +44,11 @@ const UserFeedBox = (props) => {
 
         <Typography variant="overline" component="overline" className="userBoxInfo">
           {/* TODO: Change hardcoded Followers to increment with each follower */}
-          Followers: 20
+          Followers: 2000
         </Typography>
         <Typography variant="overline" component="overline" className="userBoxInfo">
           {/* TODO: Change hardcoded Following to increment with each user followed */}
-          Following: 1
+          Following: 1000
         </Typography>
 
         <br />
@@ -58,7 +58,7 @@ const UserFeedBox = (props) => {
           Seattle, WA
         </Typography>
         <hr />
-        {/* Post Popup when clicked */}
+        {/* TODO: Have Create Post Popup when clicked */}
         <Button variant="contained" sx={{ m: 2 }}>Create Post</Button>
 
       </Box>
