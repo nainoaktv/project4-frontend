@@ -4,6 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 // ** We can adjust UserFeedBox styling later focus on relations for each element **
@@ -56,6 +57,9 @@ const UserFeedBox = (props) => {
           {/* TODO: Change hardcoded location to actual user location */}
           Seattle, WA
         </Typography>
+        <hr />
+        {/* Post Popup when clicked */}
+        <Button variant="contained" sx={{ m: 2 }}>Create Post</Button>
 
       </Box>
     </Paper>
