@@ -17,11 +17,12 @@ const Item = styled(Paper)(({ theme }) => ({
 const Feed = () => {
   return (
       <Grid container spacing={4}>
+        <Grid item xs={8}>
+          {/* TODO: INSERT RANDOM POSTS FOR TESTING WITH 2-3 TEST USERS WITH FOLLOW REALATIONS */}
+          <Item><h2>Feed</h2></Item>
+        </Grid>
         <Grid item xs={4}>
           <Item><UserFeedBox/></Item>
-        </Grid>
-        <Grid item xs={8}>
-          <Item><h2>Feed</h2></Item>
         </Grid>
       </Grid>
   )
