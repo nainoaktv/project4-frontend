@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Badge from '@mui/material/Badge';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -14,18 +15,21 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import HubIcon from '@mui/icons-material/Hub';
 import SearchIcon from '@mui/icons-material/Search';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import InputBase from '@mui/material/InputBase';
+import { NavLink } from 'react-router-dom';
 
 const pages = [
-	{text: 'Home', href: '/'},
-	{text: 'Feed', href: '/feed'},
-	{text: 'Profile', href: '/profile'},
+	{id: 1, name: 'Home', to: '/'},
+	{id: 2, name: 'Feed', to: '/feed'},
+	{id: 3, name: 'Profile', to: '/profile'},
 ];
 
 const settings = [
-	{text: 'Profile', href: '/profile'},
-	{text: 'Account', href: '/account'},
-	{text: 'Logout', href: '/logout'},
+	{id: 1, name: 'Profile', to: '/profile'},
+	{id: 2, name: 'Account', to: '/account'},
+	{id: 3, name: 'Logout', to: '/logout'},
 ];
 
 const Search = styled('div')(({ theme }) => ({
@@ -109,7 +113,7 @@ const Navbar = (props) => {
 					>
 						AYYO
 					</Typography>
-
+						{/* MENU ICON FOR MOBILE */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -140,8 +144,8 @@ const Navbar = (props) => {
 							}}
 						>
 							{pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography href={page.href} textAlign="center">{page.text}</Typography>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <NavLink key={page} to={page.to} textAlign="center">{page.name}</NavLink>
                 </MenuItem>
               ))}
 						</Menu>
@@ -160,24 +164,26 @@ const Navbar = (props) => {
 							fontFamily: 'monospace',
 							fontWeight: 700,
 							letterSpacing: '.3rem',
-							color: 'inherit',
+							color: '#66FCF1',
 							textDecoration: 'none',
 						}}
 					>
 						AYYO
 					</Typography>
+					{/* NAVBAR TEXT + ROUTES FOR HOME FEED AND PROFILE */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
 							<Button
 								key={page}
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
-								href={page.href}
+								href={page.to}
 							>
-								{page.text}
+								{page.name}
 							</Button>
 						))}
 					</Box>
+					{/* Searchbar */}
 					<Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -187,6 +193,27 @@ const Navbar = (props) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+					{/* Mail and Noti Icons */}
+					<Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={1} color="error">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <Badge badgeContent={1} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Box>
+
+					<Box sx={{ flexGrow: 0.5 }} />
+						{/* User Avatar + Popup Menu */}
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -210,8 +237,8 @@ const Navbar = (props) => {
 							onClose={handleCloseUserMenu}
 						>
 							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography href={setting.href} textAlign="center">{setting.text}</Typography>
+								<MenuItem onClick={handleCloseUserMenu}>
+									<NavLink key={settings} to={setting.to} textAlign="center">{setting.name}</NavLink>
 								</MenuItem>
 							))}
 						</Menu>
