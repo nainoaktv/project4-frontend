@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import UserFeedBox from './UserFeedBox';
+import TextField from '@mui/material/TextField';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,7 +17,15 @@ const Feed = () => {
   return (
     <Grid container spacing={4}>
       <Grid item xs={3}>
-        <Item>SEARCHBAR</Item>
+        <Item>
+          <TextField
+          fullWidth
+          id="standard-search"
+          label="Search..."
+          type="search"
+          variant="standard"
+          />
+        </Item>
       </Grid>
       <Grid item xs={5}>
         {/* TODO: INSERT RANDOM POSTS FOR TESTING WITH 2-3 TEST USERS WITH FOLLOW REALATIONS */}
