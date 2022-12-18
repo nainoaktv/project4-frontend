@@ -1,99 +1,139 @@
 // Imports
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-const { REACT_APP_SERVER_URL } = process.env;
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const Signup = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [redirect, setRedirect] = useState(false);
+const theme = createTheme();
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  }
-
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-  }
-
-  const handleUserName = (e) => {
-    setUserName(e.target.value);
-  }
-
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  }
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
-
-  const handleConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // at the beginning of a submit function
-    // make sure password and confirm password are equal
-    // password length >= 8 characters
-    if (password === confirmPassword && password.length >= 8) {
-      const newUser = { firstName, lastName, userName, email, password };
-      axios.post(`${REACT_APP_SERVER_URL}/users/signup`, newUser)
-      .then(response => {
-        console.log('===> Yay, new user');
-        console.log(response);
-        setRedirect(true);
-      })
-      .catch(error => console.log('===> Error in Signup', error));
-    } else {
-      if (password !== confirmPassword) return alert('Passwords don\'t match');
-      alert('Password needs to be at least 8 characters. Please try again.');
-    }
-  }
-
-  if (redirect) return <Redirect to="/login" /> // You can have them redirected to profile (your choice)
+export default function Signup() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
 
   return (
-    <div className="row mt-4">
-      <div className="col-md-7 offset-md-3">
-        <div className="card card-body">
-          <h2 className="py-2">Signup</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">First Name</label>
-              <input type="text" name="name" value={firstName} onChange={handleFirstName} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="name">Last Name</label>
-              <input type="text" name="name" value={lastName} onChange={handleLastName} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="name">Username</label>
-              <input type="text" name="name" value={userName} onChange={handleUserName} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" value={email} onChange={handleEmail} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" value={password} onChange={handlePassword} className="form-control"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control"/>
-            </div>
-            <button type="submit" className="btn btn-primary float-right">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  )
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'black' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="displayName"
+                  label="Username"
+                  name="displayName"
+                  autoComplete="user-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl required>
+                  <FormLabel id="genderHeader">Gender</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel value="female" control={<Radio />} label="Female" />
+                    <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  );
 }
-
-export default Signup;
