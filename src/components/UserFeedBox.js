@@ -12,7 +12,7 @@ const UserFeedBox = (props) => {
   return (
     <Paper 
       elevation={5} 
-      sx="display: flex;"
+      sx={{ display: 'flex' }}
       id="userFeedPaper"
     >
       {/* Change img to use MUI Avatar */}
@@ -27,32 +27,32 @@ const UserFeedBox = (props) => {
           variant="rounded"
         />
         
-        <Typography variant="body1" component="h1" id="firstName" className="userBoxInfo">
+        <Typography variant="body1" id="firstName" className="userBoxInfo">
           {/* TODO: Change hardcode to show actual users name */}
           Random Named
         </Typography>
-        <Typography variant="body1" component="h1" id="lastName" className="userBoxInfo">
+        <Typography variant="body1" id="lastName" className="userBoxInfo">
           Palala
         </Typography>
-        <Typography variant="overline" component="overline" className="userBoxInfo">
+        <Typography variant="overline" className="userBoxInfo">
           {/* TODO : Change hardcode to actual username for each user */}
           @nainoavillegas
         </Typography>
 
         <br />
 
-        <Typography variant="overline" component="overline" className="userBoxInfo">
+        <Typography variant="overline" className="userBoxInfo">
           {/* TODO: Change hardcoded Followers to increment with each follower */}
           Followers: 2000
         </Typography>
-        <Typography variant="overline" component="overline" className="userBoxInfo">
+        <Typography variant="overline" className="userBoxInfo">
           {/* TODO: Change hardcoded Following to increment with each user followed */}
           Following: 1000
         </Typography>
 
         <br />
 
-        <Typography variant="subtitle2" component="subtitle2" className="userBoxInfo">
+        <Typography variant="subtitle2" className="userBoxInfo">
           {/* TODO: Change hardcoded location to actual user location */}
           Seattle, WA
         </Typography>
