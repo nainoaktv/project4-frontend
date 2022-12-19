@@ -23,17 +23,13 @@ const Login = (props) => {
     e.preventDefault();
     const userData = { email, password };
 
-    axios.post(`${REACT_APP_SERVER_URL}/users/login`, userData)
+    axios.post(`${REACT_APP_SERVER_URL}/auth/login`, userData)
       .then(response => {
         const { token } = response.data;
-        // save token to localStorage
         localStorage.setItem('jwtToken', token);
-        // set token to headers
         setAuthToken(token);
-        // decode token to get the user data
         const decoded = jwt_decode(token);
-        // set the current user
-        props.nowCurrentUser(decoded); // funnction passed down as props.
+        props.nowCurrentUser(decoded);
       })
       .catch(error => {
         console.log('===> Error on login', error);
@@ -41,7 +37,7 @@ const Login = (props) => {
       });
   }
 
-  if (props.user) return <Redirect to="/profile" /> // double check
+  if (props.user) return <Redirect to="/" />
 
   return (
     <div className="row mt-4">

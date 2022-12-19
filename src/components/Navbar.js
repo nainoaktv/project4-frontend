@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -23,13 +24,12 @@ import { NavLink } from 'react-router-dom';
 const pages = [
 	{id: 1, name: 'Home', to: '/'},
 	{id: 2, name: 'Feed', to: '/feed'},
-	{id: 3, name: 'Profile', to: '/profile'},
+	{id: 3, name: 'Profile', to: '/users/:id'},
 ];
 
 const settings = [
-	{id: 1, name: 'Profile', to: '/profile'},
-	{id: 2, name: 'Account', to: '/account'},
-	{id: 3, name: 'Logout', to: '/logout'},
+	{id: 1, name: 'Profile', to: '/users/:id'},
+	{id: 2, name: 'Edit Profile', to: '/account'},
 ];
 
 const Search = styled('div')(({ theme }) => ({
@@ -203,13 +203,21 @@ const Navbar = (props) => {
             </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="show new notifications"
               color="inherit"
             >
               <Badge badgeContent={1} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <Button
+              size="medium"
+              color="inherit"
+							startIcon={<LogoutIcon />}
+							onClick={props.handleLogout}
+            >
+                Logout
+            </Button>
           </Box>
 
 					<Box sx={{ flexGrow: 0.5 }} />
