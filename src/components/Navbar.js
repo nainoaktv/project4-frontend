@@ -32,6 +32,7 @@ const settings = [
 	{id: 2, name: 'Edit Profile', to: '/account'},
 ];
 
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -196,7 +197,7 @@ const Navbar = (props) => {
 					{/* Mail and Noti Icons */}
 					<Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton size="large" aria-label="show new mails" color="inherit" href="/messages">
               <Badge badgeContent={1} color="error">
                 <MailIcon />
               </Badge>
@@ -205,9 +206,10 @@ const Navbar = (props) => {
               size="large"
               aria-label="show new notifications"
               color="inherit"
+							href="/notifications"
             >
               <Badge badgeContent={1} color="error">
-                <NotificationsIcon />
+                <NotificationsIcon  />
               </Badge>
             </IconButton>
             <Button
