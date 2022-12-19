@@ -146,7 +146,7 @@ const Navbar = (props) => {
 						>
 							{pages.map((page, idx) => (
                 <MenuItem key={idx} onClick={handleCloseNavMenu}>
-                  <NavLink to={page.to} textAlign="center">{page.name}</NavLink>
+                  <NavLink to={page.to}>{page.name}</NavLink>
                 </MenuItem>
               ))}
 						</Menu>
@@ -248,7 +248,7 @@ const Navbar = (props) => {
 						>
 							{settings.map((setting, idx) => (
 								<MenuItem key={idx} onClick={handleCloseUserMenu}>
-									<NavLink to={setting.to} textAlign="center">{setting.name}</NavLink>
+									<NavLink to={setting.to}>{setting.name}</NavLink>
 								</MenuItem>
 							))}
 						</Menu>
