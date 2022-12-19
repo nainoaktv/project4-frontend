@@ -22,14 +22,14 @@ import InputBase from '@mui/material/InputBase';
 import { NavLink } from 'react-router-dom';
 
 const pages = [
-	{id: 1, name: 'Home', to: '/'},
-	{id: 2, name: 'Feed', to: '/feed'},
-	{id: 3, name: 'Profile', to: '/users/:id'},
+	{name: 'Home', to: '/'},
+	{name: 'Feed', to: '/feed'},
+	{name: 'Profile', to: '/users/:id'},
 ];
 
 const settings = [
-	{id: 1, name: 'Profile', to: '/users/:id'},
-	{id: 2, name: 'Edit Profile', to: '/account'},
+	{name: 'Profile', to: '/users/:id'},
+	{name: 'Edit Profile', to: '/account'},
 ];
 
 
@@ -144,9 +144,9 @@ const Navbar = (props) => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages.map((page) => (
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <NavLink key={page} to={page.to} textAlign="center">{page.name}</NavLink>
+							{pages.map((page, idx) => (
+                <MenuItem key={idx} onClick={handleCloseNavMenu}>
+                  <NavLink to={page.to} textAlign="center">{page.name}</NavLink>
                 </MenuItem>
               ))}
 						</Menu>
@@ -173,9 +173,9 @@ const Navbar = (props) => {
 					</Typography>
 					{/* NAVBAR TEXT + ROUTES FOR HOME FEED AND PROFILE */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
+						{pages.map((page, idx) => (
 							<Button
-								key={page}
+								key={idx}
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 								href={page.to}
@@ -246,9 +246,9 @@ const Navbar = (props) => {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{settings.map((setting) => (
-								<MenuItem onClick={handleCloseUserMenu}>
-									<NavLink key={settings} to={setting.to} textAlign="center">{setting.name}</NavLink>
+							{settings.map((setting, idx) => (
+								<MenuItem key={idx} onClick={handleCloseUserMenu}>
+									<NavLink to={setting.to} textAlign="center">{setting.name}</NavLink>
 								</MenuItem>
 							))}
 						</Menu>
