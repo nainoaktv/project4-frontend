@@ -21,8 +21,10 @@ const theme = createTheme();
 export default function Signup() {
 
   const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
+  const [display_name, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
+  const [location, setLocation] = useState('');
+  const [occupation, setOccupation] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
@@ -31,12 +33,20 @@ export default function Signup() {
     setName(e.target.value);
   }
 
-  const handleUserName = (e) => {
-    setUserName(e.target.value);
+  const handleDisplayName = (e) => {
+    setDisplayName(e.target.value);
   }
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
+  }
+
+  const handleLocation = (e) => {
+    setLocation(e.target.value);
+  }
+
+  const handleOccupation = (e) => {
+    setOccupation(e.target.value);
   }
 
   const handlePassword = (e) => {
@@ -51,7 +61,7 @@ export default function Signup() {
     e.preventDefault();
 
     if (password === confirmPassword && password.length >= 8) {
-      const newUser = { name, email, password };
+      const newUser = { name, display_name, location, occupation, email, password };
       axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser)
         .then(response => {
           console.log('===> Yay, new user');
@@ -106,9 +116,9 @@ export default function Signup() {
               <Grid item xs={12}>
                 <TextField
                   type="text"
-                  name="userName"
-                  value={userName}
-                  onChange={handleUserName}
+                  name="display_name"
+                  value={display_name}
+                  onChange={handleDisplayName}
                   id="displayName"
                   label="Username"
                   fullWidth
@@ -126,8 +136,34 @@ export default function Signup() {
                   id="email"
                   label="Email Address"
                   fullWidth
-                  autoComplete="email"
+                  autoComplete="new-email"
                   required
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  type="location"
+                  name="location"
+                  value={location}
+                  onChange={handleLocation}
+                  id="location"
+                  label="Location"
+                  fullWidth
+                  autoComplete="new-location"
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  type="occupation"
+                  name="occupation"
+                  value={occupation}
+                  onChange={handleOccupation}
+                  id="occupation"
+                  label="Occupation"
+                  fullWidth
+                  autoComplete="new-occupation"
                 />
               </Grid>
 
