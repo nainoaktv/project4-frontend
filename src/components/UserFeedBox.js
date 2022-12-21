@@ -58,7 +58,7 @@ const UserFeedBox = (props) => {
         </Typography>
         <hr />
         {/* TODO: Have Create Post Popup when clicked */}
-        <Button variant="contained" sx={{ m: 2 }}>Create Post</Button>
+        <Button variant="contained" sx={{ m: 2 }} href="/post">Create Post</Button>
 
       </Box>
     </Paper>
