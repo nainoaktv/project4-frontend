@@ -27,8 +27,15 @@ const pages = [
 	{name: 'Profile', to: '/profile'},
 ];
 
-const settings = [
+const mobileMenu = [
+	{name: 'Home', to: '/signup'},
+	{name: 'Feed', to: '/feed'},
 	{name: 'Profile', to: '/profile'},
+	{name: 'Messages', to: '/messages'},
+	{name: 'Notifications', to: '/notifications'},
+];
+
+const settings = [
 	{name: 'Edit Profile', to: '/account'},
 	{name: 'Settings', to: '/settings'},
 ];
@@ -145,7 +152,7 @@ const Navbar = (props) => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages.map((page, idx) => (
+							{mobileMenu.map((page, idx) => (
                 <MenuItem key={idx} onClick={handleCloseNavMenu}>
                   <NavLink to={page.to}>{page.name}</NavLink>
                 </MenuItem>
