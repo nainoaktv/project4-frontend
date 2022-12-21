@@ -24,11 +24,11 @@ import { NavLink } from 'react-router-dom';
 const pages = [
 	{name: 'Home', to: '/'},
 	{name: 'Feed', to: '/feed'},
-	{name: 'Profile', to: '/users/profile'},
+	{name: 'Profile', to: '/profile'},
 ];
 
 const settings = [
-	{name: 'Profile', to: '/users/:id'},
+	{name: 'Profile', to: '/profile'},
 	{name: 'Edit Profile', to: '/account'},
 ];
 
