@@ -22,7 +22,7 @@ import InputBase from '@mui/material/InputBase';
 import { NavLink } from 'react-router-dom';
 
 const pages = [
-	{name: 'Home', to: '/'},
+	{name: 'Home', to: '/signup'},
 	{name: 'Feed', to: '/feed'},
 	{name: 'Profile', to: '/profile'},
 ];
@@ -30,6 +30,7 @@ const pages = [
 const settings = [
 	{name: 'Profile', to: '/profile'},
 	{name: 'Edit Profile', to: '/account'},
+	{name: 'Settings', to: '/settings'},
 ];
 
 
@@ -112,7 +113,7 @@ const Navbar = (props) => {
 							textDecoration: 'none',
 						}}
 					>
-						AYYO
+						AYYO?
 					</Typography>
 						{/* MENU ICON FOR MOBILE */}
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

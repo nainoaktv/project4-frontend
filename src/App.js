@@ -74,7 +74,9 @@ function App() {
               render={(props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser} />}
             />
             {/* <PrivateRoute path="/users/:id" component={Profile} user={currentUser} handleLogout={handleLogout} /> */}
-            <Route exact path="/" component={Home} />
+            {/* Comment back in original home path */}
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route path="/signup" component={Home} />
             <Route path="/profile" component={Profile} />
             <Route path="/feed" component={Feed} />
             <Route path="/post" component={Post} />
