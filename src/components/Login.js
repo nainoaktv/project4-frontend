@@ -1,11 +1,12 @@
 // Imports
 import React, { useState } from 'react';
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+// import axios from 'axios';
+// import jwt_decode from 'jwt-decode';
 import { Redirect } from 'react-router-dom';
-import setAuthToken from '../utils/setAuthToken';
+// import setAuthToken from '../utils/setAuthToken';
+import { login } from "../api/services/auth.js";
 
-const { REACT_APP_SERVER_URL } = process.env;
+// const { REACT_APP_SERVER_URL } = process.env;
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
@@ -21,20 +22,18 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userData = { email, password };
 
-    axios.post(`${REACT_APP_SERVER_URL}/auth/login`, userData)
-      .then(response => {
-        const { token } = response.data;
-        localStorage.setItem('jwtToken', token);
-        setAuthToken(token);
-        const decoded = jwt_decode(token);
-        props.nowCurrentUser(decoded);
-      })
-      .catch(error => {
-        console.log('===> Error on login', error);
-        alert('Either email or password is incorrect. Please try again');
-      });
+    login(
+      email,
+      password,
+    )
+    .then(res => {
+      console.log("response ===>", res);
+    })
+    .catch(error => {
+      console.log('===> Error on login', error);
+      alert('Either email or password is incorrect. Please try again');
+    });
   }
 
   if (props.user) return <Redirect to="/" />

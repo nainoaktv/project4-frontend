@@ -1,6 +1,6 @@
 // Imports
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,22 +12,31 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Redirect } from 'react-router-dom';
+import { register } from "../api/services/auth.js";
+// import { Redirect } from 'react-router-dom';
 
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+// const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const theme = createTheme();
 
 export default function Signup() {
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
+  const [displayName, setDisplayName] = useState();
+  const [profilePic, setProfilePic] = useState();
+  const [email, setEmail] = useState();
+  const [location, setLocation] = useState();
+  const [occupation, setOccupation] = useState();
 
-  const [name, setName] = useState('');
-  const [display_name, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [location, setLocation] = useState('');
-  const [occupation, setOccupation] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [redirect, setRedirect] = useState(false);
+  // +++++ OLD CODE ++++++
+  // const [name, setName] = useState();
+  // const [displayName, setDisplayName] = useState();
+  // const [profilePic, setProfilePic] = useState();
+  // const [email, setEmail] = useState();
+  // const [location, setLocation] = useState();
+  // const [occupation, setOccupation] = useState();
+  // const [password, setPassword] = useState();
+  // const [confirmPassword, setConfirmPassword] = useState();
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -35,6 +44,10 @@ export default function Signup() {
 
   const handleDisplayName = (e) => {
     setDisplayName(e.target.value);
+  }
+
+  const handleProfilePic = (e) => {
+    setProfilePic(e.target.value);
   }
 
   const handleEmail = (e) => {
@@ -53,29 +66,55 @@ export default function Signup() {
     setPassword(e.target.value);
   }
 
-  const handleConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  }
+  // const handleConfirmPassword = (e) => {
+  //   setConfirmPassword(e.target.value);
+  // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("event ");
+    register(
+      name,
+      displayName,
+      profilePic,
+      email,
+      password,
+      location,
+      occupation
+    ).then((res) => {
+      console.log(" res ", res);
+    });
+    alert(`${name} ${email} submitted`);
+  };
 
-    if (password === confirmPassword && password.length >= 8) {
-      const newUser = { name, display_name, location, occupation, email, password };
-      axios.post(`${REACT_APP_SERVER_URL}/users/register`, newUser)
-        .then(response => {
-          console.log('===> Yay, new user');
-          console.log(response);
-          setRedirect(true);
-        })
-        .catch(error => console.log('===> Error in Signup', error));
-    } else {
-      if (password !== confirmPassword) return alert('Passwords don\'t match');
-      alert('Password needs to be at least 8 characters. Please try again.');
-    }
-  }
+  // ++++++ OLD CONFIRM PASSWORD & REDIRECT CODE ++++++
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-  if (redirect) return <Redirect to="/profile" />
+  //   if (password === confirmPassword && password.length >= 8) {
+  //     console.log("event ");
+  //     register(
+  //       name,
+  //       displayName,
+  //       profilePic,
+  //       email,
+  //       password,
+  //       location,
+  //       occupation
+  //     )
+  //     .then(response => {
+  //       console.log('===> Yay, new user');
+  //       console.log("response ", response);
+  //       setRedirect(true);
+  //     })
+  //     .catch(error => console.log('===> Error in Signup', error));
+  //   } else {
+  //     if (password !== confirmPassword) return alert('Passwords don\'t match');
+  //     alert('Password needs to be at least 8 characters. Please try again.');
+  //   }
+  // }
+
+  // if (redirect) return <Redirect to="/profile" />
 
   return (
     <ThemeProvider theme={theme}>
@@ -116,14 +155,26 @@ export default function Signup() {
               <Grid item xs={12}>
                 <TextField
                   type="text"
-                  name="display_name"
-                  value={display_name}
+                  name="displayName"
+                  value={displayName}
                   onChange={handleDisplayName}
                   id="displayName"
                   label="Username"
                   fullWidth
                   autoComplete="user-name"
                   required
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  type="text"
+                  name="profilePic"
+                  value={profilePic}
+                  onChange={handleProfilePic}
+                  id="profilePic"
+                  label="Upload Profile Picture here..."
+                  fullWidth
                 />
               </Grid>
 
@@ -167,7 +218,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   type="password"
                   name="password"
@@ -180,8 +231,8 @@ export default function Signup() {
                   required
                 />
               </Grid>
-
-              <Grid item xs={12} sm={6}>
+              {/* OLD CONFIRM PASSWORD CODE */}
+              {/* <Grid item xs={12} sm={6}>
                 <TextField
                   type="password"
                   name="confirmPassword"
@@ -193,7 +244,7 @@ export default function Signup() {
                   autoComplete="new-password"
                   required
                 />
-              </Grid>
+              </Grid> */}
 
             </Grid>
 
@@ -215,7 +266,7 @@ export default function Signup() {
                 </Link>
               </Grid>
             </Grid>
-            
+
           </Box>
         </Box>
       </Container>
