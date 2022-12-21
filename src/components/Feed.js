@@ -58,6 +58,54 @@ const Feed = () => {
             </Grid>
           </Grid>
         </StyledPaper>
+        <StyledPaper
+          sx={{
+            my: 1,
+            mx: 'auto',
+            p: 2,
+          }}
+        >
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar>Hel</Avatar>
+            </Grid>
+            <Grid item xs>
+              <Typography>Ayyo?</Typography>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+        <StyledPaper
+          sx={{
+            my: 1,
+            mx: 'auto',
+            p: 2,
+          }}
+        >
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar>Dev</Avatar>
+            </Grid>
+            <Grid item xs>
+              <Typography>This is a random post for looks 💩</Typography>
+            </Grid>
+          </Grid>
+        </StyledPaper>
+        <StyledPaper
+          sx={{
+            my: 1,
+            mx: 'auto',
+            p: 2,
+          }}
+        >
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+              <Avatar>GA</Avatar>
+            </Grid>
+            <Grid item xs>
+              <Typography>Hire me plz I'm begging you</Typography>
+            </Grid>
+          </Grid>
+        </StyledPaper>
       </Box>
       {/* User display box on Feed */}
       <Grid item xs={4}>
