@@ -199,7 +199,7 @@ const Navbar = (props) => {
 					<Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show new mails" color="inherit" href="/messages">
-              <Badge badgeContent={1} color="error">
+              <Badge badgeContent={3} color="error">
                 <MailIcon />
               </Badge>
             </IconButton>

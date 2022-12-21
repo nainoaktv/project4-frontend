@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { register } from "../api/services/auth.js";
+import './Signup.css';
 // import { Redirect } from 'react-router-dom';
 
 // const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -131,13 +132,13 @@ export default function Signup() {
           <Avatar sx={{ m: 1, bgcolor: 'black' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{ color: 'black' }}>
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="formControl">
                 <TextField
                   type="text"
                   name="name"
@@ -152,7 +153,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="formControl">
                 <TextField
                   type="text"
                   name="displayName"
@@ -166,7 +167,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="formControl">
                 <TextField
                   type="text"
                   name="profilePic"
@@ -178,7 +179,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="formControl">
                 <TextField
                   type="email"
                   name="email"
@@ -192,7 +193,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} className="formControl">
                 <TextField
                   type="location"
                   name="location"
@@ -205,7 +206,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} className="formControl">
                 <TextField
                   type="occupation"
                   name="occupation"
@@ -218,7 +219,7 @@ export default function Signup() {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="formControl">
                 <TextField
                   type="password"
                   name="password"
@@ -256,7 +257,7 @@ export default function Signup() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Submit
             </Button>
 
             <Grid container justifyContent="flex-end">
