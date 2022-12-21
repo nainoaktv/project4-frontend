@@ -33,38 +33,38 @@ const Home = () => {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <label>name</label>
+          <label>Name</label>
           <input value={name} onChange={(e) => setName(e.target.value)} />
 
-          <label>password</label>
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <label>profile_pic</label>
+          <label>Profile Picture</label>
           <input
             value={profilePic}
             onChange={(e) => setProfilePic(e.target.value)}
           />
 
-          <label>email</label>
+          <label>EMAIL</label>
           <input value={email} onChange={(e) => setEmail(e.target.value)} />
 
-          <label>location</label>
+          <label>Location</label>
           <input
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
 
-          <label>occupation</label>
+          <label>Occupation</label>
           <input
             value={occupation}
             onChange={(e) => setOccupation(e.target.value)}
           />
 
-          <label>display_name</label>
+          <label>User Name</label>
           <input
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
