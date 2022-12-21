@@ -13,7 +13,7 @@ export const login = (email, password) => {
 export const register = (
     name, display_name, profile_pic, email, password, location, occupation
 ) => {
-    return axios.post(`${baseURL}/user/register`,
+    return axios.post(`${baseURL}/users/register`,
         {
             name: name,
             display_name: display_name,
