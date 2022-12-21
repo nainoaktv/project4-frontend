@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Welcome Enter User Here</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <label>name</label>

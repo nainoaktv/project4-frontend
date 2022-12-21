@@ -1,6 +1,7 @@
 // Imports
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
+// import { Route, Switch, Redirect, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 
@@ -18,13 +19,13 @@ import Feed from './components/Feed';
 import Notifications from './components/Notifications';
 import DirectMessage from './components/DirectMessage';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  let token = localStorage.getItem('jwtToken');
-  console.log('===> Hitting a Private Route');
-  return <Route {...rest} render={(props) => {
-    return token ? <Component {...rest} {...props} /> : <Redirect to="/login" />
-  }} />
-}
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//   let token = localStorage.getItem('jwtToken');
+//   console.log('===> Hitting a Private Route');
+//   return <Route {...rest} render={(props) => {
+//     return token ? <Component {...rest} {...props} /> : <Redirect to="/login" />
+//   }} />
+// }
 
 function App() {
 
@@ -71,9 +72,9 @@ function App() {
               path="/login"
               render={(props) => <Login {...props} nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser} />}
             />
-            <PrivateRoute path="/users/:id" component={Profile} user={currentUser} handleLogout={handleLogout} />
+            {/* <PrivateRoute path="/users/:id" component={Profile} user={currentUser} handleLogout={handleLogout} /> */}
             <Route exact path="/" component={Home} />
-            {/* <Route path="/profile" component={Profile} /> */}
+            <Route path="/profile" component={Profile} />
             <Route path="/feed" component={Feed} />
             <Route path="/messages" component={DirectMessage} />
             <Route path="/notifications" component={Notifications} />
