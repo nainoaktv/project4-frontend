@@ -16,6 +16,7 @@ import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import Home from './components/Home';
 import Feed from './components/Feed';
+import Post from './components/Post';
 import Notifications from './components/Notifications';
 import DirectMessage from './components/DirectMessage';
 
@@ -76,6 +77,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/profile" component={Profile} />
             <Route path="/feed" component={Feed} />
+            <Route path="/post" component={Post} />
             <Route path="/messages" component={DirectMessage} />
             <Route path="/notifications" component={Notifications} />
           </Switch>
